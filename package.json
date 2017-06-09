@@ -1,0 +1,19 @@
+{
+  "name": "sphero_voice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "voice.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kbc14a13/sphero_voice.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kbc14a13/sphero_voice/issues"
+  },
+  "homepage": "https://github.com/kbc14a13/sphero_voice#readme"
+}
