@@ -1,7 +1,7 @@
   "use strict"
 
 var sphero = require("sphero");
-var orb = sphero("COM4");
+var orb = sphero("COM5");
 
 orb.connect(function() {
   // roll Sphero forward
