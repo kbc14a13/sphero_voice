@@ -14,17 +14,17 @@ var contol = function(rote){
 };
 
 var move_left = function(){
-    contol(90)
+    contol(90);
 };
 
 var move_right = function(){
-    contol(270)
+    contol(270);
 };
 
 var move_advance = function(){
-    contol(0)
+    contol(0);
 };
 
 var move_back = function(){
-    contol(180)
+    contol(180);
 };
