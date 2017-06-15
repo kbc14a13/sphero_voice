@@ -10,27 +10,30 @@ var contact = JSON.parse(jsontext);
 
 //sphero部分
 orb.connect(function(){
-    if(contact == "前"){
-        orb.roll(150,0);
-        setTimeout(function(){
-            orb.roll(0,0);
-        },10000);
-    }else if (contact=="後ろ") {
-        orb.roll(150,180);
-        setTimeout(function(){
-            orb.roll(0,180);
-        },10000);
-    } else if(contact=="右"){
-        orb.roll(150,270);
-        setTimeout(function(){
-            orb.roll(0,90);
-        },10000);                
-    }else if(contact=="左"){
-        orb.roll(150,90);
-        setTimeout(function(){
-            orb.roll(0,270);
-        },10000);
-    }else{
-        console.log("無効な文字列です")
+    switch(contact){
+        case '前':
+            orb.roll(150,0);
+            setTimeout(function(){
+                orb.roll(0,0);
+            },10000);
+        break
+        case '後ろ':
+            orb.roll(150,180);
+            setTimeout(function(){
+                orb.roll(0,180);
+            },10000);
+        break
+        case '左':
+            orb.roll(150,90);
+            setTimeout(function(){
+                orb.roll(0,270);
+            },10000);
+        break
+        case '右':
+            orb.roll(150,270);
+            setTimeout(function(){
+                orb.roll(0,90);
+            },10000);
+        break
     }
 });
