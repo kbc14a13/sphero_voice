@@ -1,5 +1,7 @@
 //これを使用する際は以下のコメントを解除してコントローラー側に記入してください
 /*
+//sphero.jsの呼び出し
+var connecr =require("./sphero.js")
 //sphero等の種類を指定
 var sphero = require("sphero");
 //Bluetoothの特定のspheroに対して指定されてる送信portを入力
@@ -30,6 +32,10 @@ var move_advance = function(orb){
 
 var move_back = function(orb){
     control(orb,180);
+};
+
+var move_stop = function(orb){
+    orb.roll.bind(orb,0,0);
 };
 
 module.exports = {
