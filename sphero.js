@@ -6,6 +6,9 @@ var sphero = require("sphero");
 var orb = sphero("COM6");
 */
 //引数は角度
+
+var sphero = require("sphero");
+
 var control = function(orb,rote){
     orb.roll(150,rote);
         setTimeout(function(){
@@ -14,11 +17,11 @@ var control = function(orb,rote){
 };
 
 var move_left = function(orb){
-    control(orb,90);
+    control(orb,270);
 };
 
 var move_right = function(orb){
-    control(orb,270);
+    control(orb,90);
 };
 
 var move_advance = function(orb){
