@@ -12,7 +12,7 @@ var contol = function(rote){
             setTimeout(function(){
                 orb.roll(0,360-rote);
             },10000);
-}
+};
 
 //sphero部分
 orb.connect(function(){
