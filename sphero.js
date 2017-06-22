@@ -44,7 +44,8 @@ module.exports = {
         left: move_left,
         right: move_right,
         advance: move_advance,
-        back: move_back
+        back: move_back,
+        stop: move_stop
 
     }
 
