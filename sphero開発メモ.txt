@@ -1,8 +1,8 @@
-orb.roll(���x[�P�ʕs��],�i�s�����̊p�x)
+﻿orb.roll(速度[単位不明],進行方向の角度)
 
-��~�菇
+停止手順
 setTimeout(function(){
 	orb.roll(0,x)
 },y);
-x=360-��~�O�̊p�x
-y=���쎞�ԁi�~���b�j
+x=360-停止前の角度
+y=動作時間（ミリ秒）
