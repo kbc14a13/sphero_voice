@@ -11,8 +11,8 @@ const orb = sphero("COM6");
 
 const sphero = require("sphero");
 
-const control = function(orb,rote){
-    orb.roll(150,rote);
+const control = function(orb,angle){
+    orb.roll(150,angle);
         setTimeout(function(){
             orb.roll(0,360-rote);
         },10000);
@@ -34,8 +34,24 @@ const move_back = function(orb){
     control(orb,180);
 };
 
-const move_stop = function(orb){
+const stop = function(orb){
     orb.roll.bind(orb,0,0);
+};
+
+const rotate = function(orb,angle){
+    orb.roll.bind(orb,0,angle);
+};
+
+const rotate_right= function(orb){
+    rotate(orb,90);
+};
+
+const rotate_back= function(orb){
+    rotate(orb,180);
+};
+
+const rotate_left= function(orb){
+    rotate(orb,270);
 };
 
 module.exports = {
@@ -45,8 +61,13 @@ module.exports = {
         right: move_right,
         advance: move_advance,
         back: move_back,
-        stop: move_stop
 
+    },
+    stop: stop,
+    rotate: {
+        left: rotate_left,
+        right: rotate_right,
+        back: rotate_back
     }
 
 };
