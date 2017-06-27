@@ -26,7 +26,7 @@ const move_right = function(orb){
     control(orb,90);
 };
 
-const move_advance = function(orb){
+const move_forward = function(orb){
     control(orb,0);
 };
 
@@ -59,7 +59,7 @@ module.exports = {
     move: {
         left: move_left,
         right: move_right,
-        advance: move_advance,
+        advance: move_forward,
         back: move_back,
 
     },
