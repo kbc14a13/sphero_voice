@@ -5,7 +5,6 @@ var test = require("./spheroController.js");
 var sphero = require("sphero");
 //Bluetoothの特定のspheroに対して指定されてる送信portを入力
 var spheroChoice = require("./spheroChoice.js");
-console.log("1")
 spheroChoice.choice(function(port){
   console.log(port);
   var orb = sphero(port);
