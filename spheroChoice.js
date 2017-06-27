@@ -8,7 +8,7 @@ const keypress = require('keypress');
  * 
  * @param {(portName: string) => void} callback 
  */
-const choice = function(callback){
+const choice = function(callback) {
 
     // 標準入力がkeypressイベントを発火できるようにする。
     keypress(process.stdin);
@@ -19,7 +19,7 @@ const choice = function(callback){
 
     // 選択が完了したかどうかを表すフラグ
     // 完了していたらtrue。
-    let choiceDecison = false;
+    let chosen = false;
 
     // keypressイベントを監視
     process.stdin.on('keypress', function (ch, key) {
@@ -28,7 +28,7 @@ const choice = function(callback){
             // Ctrl+Cが押された時はキャンセル
             process.stdin.pause();
 
-        } else if (!choiceDecison) {
+        } else if (!chosen) {
             // ポートが未選択の間だけ動作する
             switch(key.name) {
 
@@ -36,13 +36,13 @@ const choice = function(callback){
                 // 選択されたポートを表す文字列を外部に通知します。
                 case 'f1':
                     process.stdin.pause();
-                    choiceDecison = true;
+                    chosen = true;
                     callback(choiceJson.RPO);
                     break;
 
                 case 'f2':
                     process.stdin.pause();
-                    choiceDecison = true;
+                    chosen = true;
                     callback(choiceJson.PBW);
                     break;
 
