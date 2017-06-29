@@ -2,24 +2,24 @@
     <head>
         <meta charset="utf-8">
         <title>すふぃろてすと</title>
-        <script
-            src="https://code.jquery.com/jquery-3.2.1.min.js"
-            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="></script>
-        <script>
-            function action(command) {
-                $.post("http://localhost:8282/", {command: command});
-            }
-        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </head>
     <body>
-        <form onsubmit="return false;">
-            <ul>
-                <li><button onclick="action('forward')">前</button></li>
-                <li><button onclick="action('back')">後</button></li>
-                <li><button onclick="action('left')">左</button></li>
-                <li><button onclick="action('right')">右</button></li>
-                <li><button onclick="action('stop')">止</button></li>
-            </ul>
+        <script>
+            $(function() {
+                $('#testForm').children().on('click', function() {
+                    var selected =$(this).val();
+                    console.log(selected);
+                    $.post('http://localhost:8282/', {command: selected});
+                });
+            });
+        </script>
+        <form id="testForm" onsubmit="return false;">
+            <button value="forward">前</button>
+            <button value="back">後</button>
+            <button value="left">左</button>
+            <button value="right">右</button>
+            <button value="stop">止</button>
         </form>
     </body>
 </html>
