@@ -1,14 +1,17 @@
 var express = require('express');
 var app = express();
+//spheroのポートを選択するときに使用
 var keypress = require('keypress');
 //sphero.jsの呼び出し
 var controller = require("./spheroController.js");
 //sphero等の機種を指定
 var sphero = require("sphero");
-//Bluetoothの特定のspheroに対して指定されてる送信portを入力
+//spheroで使用するポートの選択
 var spheroChoice = require("./spheroChoice.js");
 var bodyParser = require('body-parser');
 app.use(bodyParser());
+
+//Bluetoothの特定のspheroに対して指定されてる送信portを入力
 spheroChoice.choice( function(port) {
     console.log(port);
     var orb = sphero(port);
