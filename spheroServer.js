@@ -17,16 +17,22 @@ spheroChoice.choice( function(port) {
     var orb = sphero(port);
     orb.connect();
     app.post('/',function(req,res){
-        if (req.body.command === "forward") {
-            controller.move.advance(orb);
-        } else if (req.body.command === "back") {
-            controller.move.back(orb);
-        } else if (req.body.command === "left") {
-            controller.move.left(orb);
-        } else if (req.body.command === "right") {
-            controller.move.right(orb);
-        } else if (req.body.command === "stop") {
-            controller.stop(orb);
+        switch (req.body.command) {
+            case "forward" :
+                controller.move.advance(orb);
+                break;
+            case "back" :
+                controller.move.back(orb);
+                break;
+            case "right":
+                controller.move.right(orb);
+                break;
+            case "left" :
+                controller.move.left(orb);
+                break;                    
+            case "stop" :
+                controller.stop(orb);
+                break;
         }
         res.end();
     })
