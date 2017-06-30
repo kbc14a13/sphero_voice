@@ -7,10 +7,8 @@ var controller = require("./spheroController.js");
 var sphero = require("sphero");
 //Bluetoothの特定のspheroに対して指定されてる送信portを入力
 var spheroChoice = require("./spheroChoice.js");
-
-var server = app.listen(8282, function(){
-    console.log('Server is running!');
-})
+var bodyParser = require('body-parser');
+app.use(bodyParser());
 spheroChoice.choice( function(port) {
     console.log(port);
     var orb = sphero(port);
@@ -32,3 +30,7 @@ spheroChoice.choice( function(port) {
 })
 
 
+
+var server = app.listen(8282, function(){
+    console.log('Server is running!');
+})
