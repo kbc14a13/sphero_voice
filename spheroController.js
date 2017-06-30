@@ -9,7 +9,6 @@ const orb = sphero("COM6");
 */
 //引数は角度
 
-const sphero = require("sphero");
 
 const control = function(orb,angle){
     orb.roll(150,angle);
