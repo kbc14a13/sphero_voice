@@ -1,4 +1,4 @@
-﻿# voiceSphero  
+﻿# sphero_voice
 
 ## config.jsonに関して  
 
