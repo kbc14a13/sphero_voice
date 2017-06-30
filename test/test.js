@@ -1,17 +1,16 @@
- keypress = require('keypress');
+const keypress = require('keypress');
 //sphero.jsの呼び出し
- test = require("../spheroController.js");
+const test = require("../spheroController.js");
 //sphero等の機種を指定
- sphero = require("sphero");
+const sphero = require("sphero");
 //Bluetoothの特定のspheroに対して指定されてる送信portを入力
- spheroChoice = require("../spheroChoice.js");
+const spheroChoice = require("../spheroChoice.js");
 spheroChoice.choice(function(port){
   console.log(port);
-   orb = sphero(port);
+  const orb = sphero(port);
   orb.connect(listen);
-
   function handle(ch, key) {
-     stop = orb.roll.bind(orb, 0, 0)
+    const stop = orb.roll.bind(orb, 0, 0)
 
     if (key.ctrl && key.name === "c") {
       process.stdin.pause();
