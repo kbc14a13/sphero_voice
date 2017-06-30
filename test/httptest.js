@@ -1,6 +1,6 @@
-var express = require('express');
-var app = express();
-var bodyParser = require('body-parser');
+ express = require('express');
+ app = express();
+ bodyParser = require('body-parser');
 app.use(bodyParser());
 
 app.post('/',function(req,res){
@@ -8,6 +8,6 @@ app.post('/',function(req,res){
     res.end();
 })
 
-var server = app.listen(8282, function(){
+ server = app.listen(8282, function(){
     console.log('Server is running!');
 })

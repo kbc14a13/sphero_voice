@@ -1,20 +1,20 @@
-var express = require('express');
-var app = express();
+const express = require('express');
+const app = express();
 //spheroのポートを選択するときに使用
-var keypress = require('keypress');
+const keypress = require('keypress');
 //sphero.jsの呼び出し
-var controller = require("./spheroController.js");
+const controller = require("./spheroController.js");
 //sphero等の機種を指定
-var sphero = require("sphero");
+const sphero = require("sphero");
 //spheroで使用するポートの選択
-var spheroChoice = require("./spheroChoice.js");
-var bodyParser = require('body-parser');
+const spheroChoice = require("./spheroChoice.js");
+const bodyParser = require('body-parser');
 app.use(bodyParser());
 
 //Bluetoothの特定のspheroに対して指定されてる送信portを入力
 spheroChoice.choice( function(port) {
     console.log(port);
-    var orb = sphero(port);
+    const orb = sphero(port);
     orb.connect();
     app.post('/',function(req,res){
         switch (req.body.command) {
@@ -40,6 +40,6 @@ spheroChoice.choice( function(port) {
 
 
 
-var server = app.listen(8282, function(){
+const server = app.listen(8282, function(){
     console.log('Server is running!');
 })
