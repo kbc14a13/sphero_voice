@@ -9,61 +9,54 @@ var speech = new webkitSpeechRecognition();
 speech.lang = "ja";
 
 //ボタンクリックで認識開始
-btn.addEventListener('click', function() {
+btn.addEventListener('click', function () {
   speech.start();
 });
 
-//認識されたテキストを使って処理を分岐
-speech.addEventListener('result', function(e) {
-  console.log(e);
-  var text = e.results[0][0].transcript;
+/**
+ * 特定の言葉をコマンドとして解釈して、返却します。
+ * 
+ * @param {string} message 抽出する対象の文字列
+ * @return {string} 抽出されたコマンド　"forword" | "back" | "right" | "left" | "stop" 
+ */
+function extructCommand(message) {
 
-  if(text.match(/前/)){
-    //textに前が含まれるときの処理
-    alert("喋った言葉は前です。");
-  }else if(text.match(/後/)){
-    //textに後ろが含まれるときの処理
-    alert("喋った言葉は後ろです。");
-  }else if(text.match(/右/)){
-    //textに右が含まれるときの処理
-    alert("喋った言葉は右です。");
-  }else if(text.match(/左/)){
-    //textに左が含まれるときの処理
-    alert("喋った言葉は左です。");
-  }else if(text.match(/停止/)){
-    //textに停止が含まれるときの処理
-    alert("喋った言葉は停止です。");
+//正規表現とそれに対応するコマンドを配列に登録する。
+  var matchers = [
+    {reg: /前/, command: "forword"},
+    {reg: /後/, command: "back"},
+    {reg: /右/, command: "right"},
+    {reg: /左/, command: "left"},
+    {reg: /停止/, command: "stop"}
+  ];
+
+//配列matchersの長さだけfor文で回している。
+  for(var i = 0; i < matchers.length; i++){
+
+//受け取った言葉によって正規表現に一致したコマンドを返却する。
+    if (message.match(matchers[i].reg)){
+      return matchers[i].command;
+    }
+
   }
-  else{
-    //上記のどれにも当てはまらないとき
-    getTextContents(text);
-  }
+  
+}
+
+//認識されたテキストを使って処理を分岐
+speech.addEventListener('result', function (e) {
+
+  console.log(e);
+
+  var str = e.results[0][0].transcript;
+//matchersに登録していない言葉が出たらその言葉を表示する関数。
+  getTextContents(str);
+
+  var command = extructCommand(str);
+
 });
 
-  /**switch(text) {
-    case "前":
-      alert("喋った言葉は前です");
-      break;
-    case "後ろ":
-      alert("喋った言葉は後ろです");
-      break;
-    case "右":
-      alert("喋った言葉は右です");
-      break;
-    case "左":
-      alert("喋った言葉左です");
-      break;
-    case "停止":
-     alert("喋った言葉は停止です");
-      break;
-    default:
-      getTextContents(text);
-  }  
-});*/
-
-
 //テキスト表示
-function getTextContents(text) {
+function getTextContents(str) {
   content.innerHTML = '<p>認識された言葉</p>' +
-                   '<input type="text" value="' + text + '">';
+    '<input type="text" value="' + str + '">';
 }
