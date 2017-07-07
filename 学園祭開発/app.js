@@ -17,14 +17,14 @@ btn.addEventListener('click', function () {
  * 特定の言葉をコマンドとして解釈して、返却します。
  * 
  * @param {string} message 抽出する対象の文字列
- * @return {string | null} 抽出されたコマンド　"forword" | "back" | "right" | "left" | "stop" 
+ * @return {string | null} 抽出されたコマンド　"forward" | "back" | "right" | "left" | "stop" 
  */
 function extructCommand(message) {
 
 
   //正規表現とそれに対応するコマンドを配列に登録する。
   var matchers = [
-    {reg: /前/, command: "forword"},
+    {reg: /前/, command: "forward"},
     {reg: /後/, command: "back"},
     {reg: /右/, command: "right"},
     {reg: /左/, command: "left"},
