@@ -17,11 +17,12 @@ btn.addEventListener('click', function () {
  * 特定の言葉をコマンドとして解釈して、返却します。
  * 
  * @param {string} message 抽出する対象の文字列
- * @return {string} 抽出されたコマンド　"forword" | "back" | "right" | "left" | "stop" 
+ * @return {string | null} 抽出されたコマンド　"forword" | "back" | "right" | "left" | "stop" 
  */
 function extructCommand(message) {
 
-//正規表現とそれに対応するコマンドを配列に登録する。
+
+  //正規表現とそれに対応するコマンドを配列に登録する。
   var matchers = [
     {reg: /前/, command: "forword"},
     {reg: /後/, command: "back"},
@@ -30,29 +31,35 @@ function extructCommand(message) {
     {reg: /停止/, command: "stop"}
   ];
 
-//配列matchersの長さだけfor文で回している。
+  //配列matchersの長さだけfor文で回している。
   for(var i = 0; i < matchers.length; i++){
 
-//受け取った言葉によって正規表現に一致したコマンドを返却する。
+  //受け取った言葉によって正規表現に一致したコマンドを返却する。
     if (message.match(matchers[i].reg)){
       return matchers[i].command;
     }
 
   }
   
+  return null;
+  
 }
 
 //認識されたテキストを使って処理を分岐
 speech.addEventListener('result', function (e) {
 
-  console.log(e);
-
   var str = e.results[0][0].transcript;
-//matchersに登録していない言葉が出たらその言葉を表示する関数。
+  //matchersに登録していない言葉が出たらその言葉を表示する関数。
   getTextContents(str);
 
   var command = extructCommand(str);
 
+  //commandに値が入っていれば、送信する。 
+  //登録されていない言葉が言われると送信されない。
+  if(command != null){
+     $.post('http://localhost:8282/', {command: command});
+  }
+ 
 });
 
 //テキスト表示
