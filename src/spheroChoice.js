@@ -1,4 +1,4 @@
-const choiceJson = require("./config.json");
+const choiceJson = require("../config.json");
 const keypress = require('keypress');
 
 
