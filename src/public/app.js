@@ -1,16 +1,13 @@
 //readyを使ってhtmlが読み込まれてからScriptを動作させている。
 $(function () {
 
-  //音声認識APIの使用
+  //音声認識APIの使用する。
   var recognition = new webkitSpeechRecognition();
 
-  //言語を日本語に設定
+  //言語を日本語に設定する。
   recognition.lang = "ja";
 
-  //音声認識を継続させる。
-  recognition.continuous = true;
-
-  //認識されたテキストを使って処理を分岐
+  //認識されたテキストを使って処理を分岐する。
   recognition.addEventListener('result', function (e) {
 
     var str = e.results[0][0].transcript;
@@ -28,7 +25,14 @@ $(function () {
 
   });
 
-  //ボタンクリックで認識開始
+  /*これで連続で音声認識が行える。
+   *マイクの許可の通知もタブを閉じるまで一回許可するとしばらくはポップが出なくなる。
+  */
+  recognition.addEventListener('end', function () {
+    recognition.start();
+  });
+
+  //ボタンクリックで認識開始する。
   $('#btn').on('click', function () {
     recognition.start();
   });
@@ -68,7 +72,7 @@ function extructCommand(message) {
 
 }
 
-//テキスト表示
+//テキストを表示する。
 function getTextContents(result) {
   $('#content').text(result);
 }
