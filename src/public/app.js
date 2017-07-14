@@ -1,7 +1,7 @@
 //readyを使ってhtmlが読み込まれてからScriptを動作させている。
 $(function () {
 
-  //音声認識APIの使用する。
+  //音声認識APIを使用する。
   var recognition = new webkitSpeechRecognition();
 
   //言語を日本語に設定する。
@@ -27,7 +27,7 @@ $(function () {
 
   /*これで連続で音声認識が行える。
    *マイクの許可の通知もタブを閉じるまで一回許可するとしばらくはポップが出なくなる。
-  */
+   */
   recognition.addEventListener('end', function () {
     recognition.start();
   });
