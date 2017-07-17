@@ -9,7 +9,7 @@ const sphero = require("sphero");
 //spheroで使用するポートの選択
 const spheroChoice = require("./spheroChoice.js");
 const bodyParser = require('body-parser');
-app.use(express.static('public'));
+app.use(express.static(__dirname + 'public'));
 app.use(bodyParser());
 
 //Bluetoothの特定のspheroに対して指定されてる送信portを入力
