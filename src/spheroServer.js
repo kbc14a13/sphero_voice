@@ -9,7 +9,12 @@ const sphero = require("sphero");
 //spheroで使用するポートの選択
 const spheroChoice = require("./spheroChoice.js");
 const bodyParser = require('body-parser');
-app.use(express.static(__dirname + 'public'));
+
+// パス区切り文字列とかいい感じに解決してくれるモジュール
+const path = require('path');
+// htmlなどを公開するディレクトリを指定
+app.use(express.static(path.resolve(__dirname, 'public')));
+
 app.use(bodyParser());
 
 //Bluetoothの特定のspheroに対して指定されてる送信portを入力
