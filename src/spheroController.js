@@ -13,7 +13,7 @@ const orb = sphero("COM6");
 const control = function(orb,angle){
     orb.roll(150,angle);
         setTimeout(function(){
-            orb.roll(0,360-rote);
+            orb.roll(0,360-angle);
         },10000);
 };
 
